@@ -1,0 +1,43 @@
+{
+    "name": "Konnected",
+    "short_name": "Konnected",
+    "start_url": "/",
+    "display": "fullscreen",
+    "orientation": "portrait",
+    "background_color": "#CFD8DC",
+    "description": "Talk to hardware over internet using AI",
+    "icons": [{
+            "src": "/img/krapesh72.png",
+            "sizes": "72x72",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/krapesh96.png",
+            "sizes": "96x96",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/krapesh144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/krapesh168.png",
+            "sizes": "168x168",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/krapesh192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/img/krapesh500.png",
+            "sizes": "500x500",
+            "type": "image/png"
+        }
+    ],
+    "//": "Some browsers will use this to enable push notifications.",
+    "//": "It is the same for all projects, this is not your project's sender ID",
+    "gcm_sender_id": "114891145688"
+}

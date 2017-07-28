@@ -1,0 +1,31 @@
+{
+  "name": "konnected",
+  "version": "1.0.0",
+  "description": "talk to hardware over internet using ai",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrapeshNaik/konnected.git"
+  },
+  "keywords": [
+    "iot",
+    "ai",
+    "konnected"
+  ],
+  "author": "krapesh naik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KrapeshNaik/konnected/issues"
+  },
+  "homepage": "https://github.com/KrapeshNaik/konnected#readme",
+  "devDependencies": {
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
+  },
+  "dependencies": {
+    "page": "^1.7.1"
+  }
+}
