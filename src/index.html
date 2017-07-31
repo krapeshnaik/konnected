@@ -9,16 +9,35 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="application-name" content="Konnected">
     <meta name="apple-mobile-web-app-title" content="Konnected">
-    <link rel="apple-touch-icon" sizes="72x72" href="/img/krapesh72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/img/krapesh144.png">
     <meta name="msapplication-starturl" content="/">
 
     <title>Konnected</title>
 
     <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="72x72" href="/img/krapesh72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/img/krapesh144.png">
+    <link href="https://fonts.googleapis.com/css?family=Dosis" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"
+        crossorigin="anonymous">
 </head>
 
 <body>
+    <div class="pure-menu pure-menu-horizontal">
+        <a href="javascript:void(0)" class="pure-menu-heading">Konnected</a>
+        <ul class="pure-menu-list">
+            <li class="pure-menu-item pure-menu">
+                <a href="#" class="pure-menu-link">Home</a>
+            </li>
+            <li class="pure-menu-item">
+                <a href="#home2" class="pure-menu-link">home2</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="router-view">
+        <a class="pure-button" href="#">Home</a>
+        <a class="pure-button" href="#home2">Home2</a>
+    </div>
 </body>
 
 </html>

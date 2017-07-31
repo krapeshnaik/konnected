@@ -1,12 +1,15 @@
-import { Router } from './lib/director.js';
+import {
+    Router
+} from './lib/director.js';
+import getComponent from './util/get_component.util.js';
 
-import indexRouteHandler from './routeHandlers/indexRoute.handler.js';
-import chatRouteHandler from './routeHandlers/chatRoute.handler.js';
-import notFoundRouteHandler from './routeHandlers/notFoundRoute.handler.js';
+import indexRouteHandler from './route_handlers/index_route.handler.js';
+import chatRouteHandler from './route_handlers/chat_route.handler.js';
+import notFoundRouteHandler from './route_handlers/not_found_route.handler.js';
 
 const routes = {
     '/': indexRouteHandler,
-    '/chat': chatRouteHandler
+    'home2': chatRouteHandler
 };
 
 const allRoutes = () => {
@@ -16,7 +19,7 @@ const allRoutes = () => {
 const router = Router(routes);
 
 router.configure({
-    html5history: true,
+    html5history: false,
     on: allRoutes,
     notfound: notFoundRouteHandler
 });
