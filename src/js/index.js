@@ -1,1 +1,3 @@
-console.log("DFSFDS");
+import router from './router';
+
+router.init();

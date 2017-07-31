@@ -1,5 +1,7 @@
 const webpack = require('webpack'),
-    path = require('path');
+    path = require('path'),
+    HtmlPlugin = require('html-webpack-plugin'),
+    CleanPlugin = require('clean-webpack-plugin');
 
 const SRC_DIR = './src',
     DIST_DIR = './public';
@@ -9,22 +11,29 @@ module.exports = {
     devtool: 'inline-source-map',
     target: 'web',
 
-    entry: [
-        'webpack-dev-server/client?http://localhost:8080',
-        'webpack/hot/only-dev-server',
-        './js/index.js'
-    ],
+    entry: {
+        index: [
+            'webpack-dev-server/client?http://localhost:8080',
+            'webpack/hot/only-dev-server',
+            './js/index.js'
+        ],
+        vendor: [
+            './js/lib/director.js'
+        ]
+    },
 
     output: {
         path: path.join(__dirname, DIST_DIR),
-        filename: 'js/index.js',
-        chunkFilename: 'js/index.js',
+        filename: 'js/[name].js',
+        chunkFilename: 'js/[name].js',
     },
 
     devServer: {
         host: 'localhost',
         port: 8080,
-        historyApiFallback: true,
+        historyApiFallback: {
+            index: './index.html'
+        },
         hot: true
     },
 
@@ -33,5 +42,24 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
+
+        new CleanPlugin(['public'], {
+            root: path.join(__dirname, './'),
+            exclude: [],
+            verbose: true,
+            dry: false
+        }),
+
+        new HtmlPlugin({
+            template: 'index.html',
+            filename: 'index.html',
+            minify: {
+                html5: true,
+                collapseWhitespace: false,
+                removeComments: true,
+                minifyCSS: false,
+                minifyJS: false
+            }
+        })
     ]
 }

@@ -4,6 +4,9 @@
   "description": "talk to hardware over internet using ai",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack",
+    "prod_build": "webpack --config webpack.prod.config.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,10 +25,13 @@
   },
   "homepage": "https://github.com/KrapeshNaik/konnected#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.16",
+    "html-webpack-plugin": "^2.29.0",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1"
   },
   "dependencies": {
+    "director": "^1.2.8",
     "page": "^1.7.1"
   }
 }

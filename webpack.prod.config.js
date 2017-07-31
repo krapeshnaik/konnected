@@ -1,5 +1,7 @@
 const webpack = require('webpack'),
-    path = require('path');
+    path = require('path'),
+    HtmlPlugin = require('html-webpack-plugin'),
+    CleanPlugin = require('clean-webpack-plugin');
 
 const SRC_DIR = './src',
     DIST_DIR = './public';
@@ -8,9 +10,14 @@ module.exports = {
     context: path.join(__dirname, SRC_DIR),
     target: 'web',
 
-    entry: [
-        './js/index.js'
-    ],
+    entry: {
+        index: [
+            './js/index.js'
+        ],
+        vendor: [
+            './js/lib/director.js'
+        ]
+    },
 
     output: {
         path: path.join(__dirname, DIST_DIR),
@@ -22,5 +29,24 @@ module.exports = {
 
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
+
+        new CleanPlugin(['public'], {
+            root: path.join(__dirname, './'),
+            exclude: [],
+            verbose: true,
+            dry: false
+        }),
+
+        new HtmlPlugin({
+            template: 'index.html',
+            filename: 'index.html',
+            minify: {
+                html5: true,
+                collapseWhitespace: false,
+                removeComments: true,
+                minifyCSS: false,
+                minifyJS: false
+            }
+        })
     ]
 }
