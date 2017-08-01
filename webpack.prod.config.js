@@ -79,6 +79,7 @@ module.exports = {
             FireBaseKey: JSON.stringify('AIzaSyCVWVc5T88npxv6CC_gcMxQsndO_WzYHNY'),
             FireBaseAuthDomain: JSON.stringify('https://konnected-e015d.firebaseapp.com/'),
             FireBaseDatabase: JSON.stringify('https://konnected-e015d.firebaseio.com/'),
+            FireBaseStorage: JSON.stringify('gs://konnected-e015d.appspot.com'),
             FCMSenderId: JSON.stringify('1044398055065')
         })
     ]

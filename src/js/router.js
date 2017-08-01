@@ -9,7 +9,7 @@ import notFoundRouteHandler from './route_handlers/not_found_route.handler.js';
 
 const routes = {
     '/': indexRouteHandler,
-    'home2': chatRouteHandler
+    'chat': chatRouteHandler
 };
 
 const allRoutes = () => {
