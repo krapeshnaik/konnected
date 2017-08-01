@@ -7,6 +7,7 @@
     "start": "webpack-dev-server",
     "build": "webpack",
     "prod_build": "webpack --config webpack.prod.config.js",
+    "deploy": "webpack --config webpack.prod.config.js && firebase deploy",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "konnected-e015d"
+    "default": "konnected-e015d",
+    "konnected": "konnected-e015d"
   }
 }
