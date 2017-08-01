@@ -1,4 +1,4 @@
-export default `<div class="home-container">
+export default `<div class="home-container animated fadeInRight">
         <div class="message">
             Welcome!
         </div>

@@ -2,6 +2,7 @@ const
     webpack = require('webpack'),
     path = require('path'),
     HtmlPlugin = require('html-webpack-plugin'),
+    UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
     CleanPlugin = require('clean-webpack-plugin');
 
 const
@@ -18,7 +19,7 @@ module.exports = {
 
     entry: {
         index: [
-            'webpack-dev-server/client?http://localhost:8080',
+            'webpack-dev-server/client?http://localhost:8082',
             'webpack/hot/only-dev-server',
             './js/index.js'
         ],
@@ -45,7 +46,7 @@ module.exports = {
 
     devServer: {
         host: 'localhost',
-        port: 8080,
+        port: 8082,
         historyApiFallback: {
             index: './index.html'
         },
@@ -86,6 +87,13 @@ module.exports = {
                 minifyCSS: false,
                 minifyJS: false
             }
+        }),
+
+        new webpack.DefinePlugin({
+            FireBaseKey: JSON.stringify('AIzaSyCVWVc5T88npxv6CC_gcMxQsndO_WzYHNY'),
+            FireBaseAuthDomain: JSON.stringify('http://localhost:8082'),
+            FireBaseDatabase: JSON.stringify('https://konnected-e015d.firebaseio.com/'),
+            FCMSenderId: JSON.stringify('1044398055065')
         })
     ]
 }

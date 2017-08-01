@@ -18,7 +18,15 @@ module.exports = functions.https.onRequest((req, res) => {
                 response1: response.result.fulfillment.speech
             })
             .then(snapshot => {
-                res.redirect(303, snapshot.ref);
+                console.log(snapshot);
+                res.send(200, {
+                    success: true
+                });
+            })
+            .catch(() => {
+                res.send(500, {
+                    success: false
+                })
             })
     });
 
