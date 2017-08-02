@@ -2,7 +2,6 @@ const
     webpack = require('webpack'),
     path = require('path'),
     HtmlPlugin = require('html-webpack-plugin'),
-    UglifyJSPlugin = require('uglifyjs-webpack-plugin'),
     CleanPlugin = require('clean-webpack-plugin');
 
 const
@@ -24,7 +23,7 @@ module.exports = {
             './js/index.js'
         ],
         vendor: [
-            './js/lib/director.js'
+            './js/libs/director.js'
         ]
     },
 
@@ -39,8 +38,8 @@ module.exports = {
         extensions: ['.js'],
         alias: {
             '@root': JS_ROOT,
-            '@lib': path.join(JS_ROOT, 'lib'),
-            '@util': path.join(JS_ROOT, 'util'),
+            '@libs': path.join(JS_ROOT, 'libs'),
+            '@utils': path.join(JS_ROOT, 'utils'),
             '@components': path.join(JS_ROOT, 'components'),
             '@route_handlers': path.join(JS_ROOT, 'route_handlers'),
             '@middlewares': path.join(JS_ROOT, 'middlewares'),
@@ -96,7 +95,7 @@ module.exports = {
 
         new webpack.DefinePlugin({
             FireBaseKey: JSON.stringify('AIzaSyCVWVc5T88npxv6CC_gcMxQsndO_WzYHNY'),
-            FireBaseAuthDomain: JSON.stringify('http://localhost:8080/'),
+            FireBaseAuthDomain: JSON.stringify('https://localhost:8080/'),
             FireBaseDatabase: JSON.stringify('https://konnected-e015d.firebaseio.com/'),
             FireBaseStorage: JSON.stringify('gs://konnected-e015d.appspot.com'),
             FCMSenderId: JSON.stringify('1044398055065')

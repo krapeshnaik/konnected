@@ -20,7 +20,7 @@ module.exports = {
             './js/index.js'
         ],
         vendor: [
-            './js/lib/director.js'
+            './js/libs/director.js'
         ]
     },
 
@@ -34,9 +34,14 @@ module.exports = {
         enforceExtension: false,
         extensions: ['.js'],
         alias: {
-            'JSRoot': JS_ROOT,
-            'SASSRoot': SASS_ROOT,
-            'ImgRoot': IMG_ROOT
+            '@root': JS_ROOT,
+            '@libs': path.join(JS_ROOT, 'libs'),
+            '@utils': path.join(JS_ROOT, 'utils'),
+            '@components': path.join(JS_ROOT, 'components'),
+            '@route_handlers': path.join(JS_ROOT, 'route_handlers'),
+            '@middlewares': path.join(JS_ROOT, 'middlewares'),
+            '@css': SASS_ROOT,
+            '@img': IMG_ROOT
         }
     },
 

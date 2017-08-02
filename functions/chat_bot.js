@@ -8,15 +8,14 @@ const
     admin = firebaseAdmin.initializeApp(functions.config().firebase);
 
 module.exports = functions.https.onRequest((req, res) => {
-    console.log(req.query.status);
+    res.set('Access-Control-Allow-Origin', 'https://konnected-e015d.firebaseapp.com');
+    res.set('Access-Control-Allow-Methods', 'GET');
 
     let request = app.textRequest(req.query.command, {
         sessionId: 123456
     });
 
     request.on('response', response => {
-        console.log(response.result.fulfillment.speech);
-
         if (JSON.stringify(response.result.parametersa) == '{}') {
             // non command replies
             res

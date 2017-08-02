@@ -3,10 +3,10 @@
 import debug from 'debug';
 
 import Konnected from '@root/app_scope.js';
-import render from '@util/render.js';
+import render from '@utils/render.js';
 import chatComponent from '@components/chat.component.js';
 
-let logger = debug('konnected:index_route');
+let logger = debug('konnected:chat_route');
 
 export default () => {
     let messages = [];

@@ -20,7 +20,8 @@ const initLogin = () => {
                 .signInWithEmailAndPassword('krapeshnaik@gmail.com', 'krapesh')
                 .then(user => {
                     logger('logged in', user);
-                    window.location.hash = '/';
+                    window.location.hash = 'devices';
+
                     // store per session
                     Konnected.user = user;
                 })
