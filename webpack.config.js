@@ -38,9 +38,14 @@ module.exports = {
         enforceExtension: false,
         extensions: ['.js'],
         alias: {
-            'JSRoot': JS_ROOT,
-            'SASSRoot': SASS_ROOT,
-            'ImgRoot': IMG_ROOT
+            '@root': JS_ROOT,
+            '@lib': path.join(JS_ROOT, 'lib'),
+            '@util': path.join(JS_ROOT, 'util'),
+            '@components': path.join(JS_ROOT, 'components'),
+            '@route_handlers': path.join(JS_ROOT, 'route_handlers'),
+            '@middlewares': path.join(JS_ROOT, 'middlewares'),
+            '@css': SASS_ROOT,
+            '@img': IMG_ROOT
         }
     },
 

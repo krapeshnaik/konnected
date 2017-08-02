@@ -10,16 +10,23 @@
     .msg-inp {
         margin-top: .5em;
         height: 8%;
-        .msg {
-            border-bottom: 1px solid gray;            
-            height: 100%;
+        .msg-cont {
             width: 80%;
-            background-color: white;
+            .msg {
+                background-color: white;
+                border: none;
+                box-sizing: border-box;
+                border-bottom: 1px solid #8e8d8d;
+                outline: none;
+                padding: .5em;
+                height: 100%;
+                width: 100%;
+            }
         }
         .send {
             background-color: #51a751;
-            width: 14%;            
-            height: 100%;
+            width: 2.35em;
+            height: 2.35em;
             border-radius: 50%;
             margin-left: .75em;
         }

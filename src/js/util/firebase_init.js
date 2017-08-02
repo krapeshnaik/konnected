@@ -1,8 +1,11 @@
-import debug from 'debug';
-import firebase from 'firebase';
-import Konnected from 'JSRoot/app_scope.js';
+'use strict';
 
-var logger = debug('konnected:firebase');
+import debug from 'debug';
+
+import firebase from 'firebase';
+import Konnected from '@root/app_scope.js';
+
+let logger = debug('konnected:firebase');
 
 const firebaseInit = () => {
     logger('initialize');

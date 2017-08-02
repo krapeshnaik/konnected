@@ -1,7 +1,9 @@
-import debug from 'debug';
-import Konnected from 'JSRoot/app_scope';
+'use strict';
 
-var logger = debug('konnected:login');
+import debug from 'debug';
+import Konnected from '@root/app_scope';
+
+let logger = debug('konnected:login');
 
 const initLogin = () => {
     logger('initialize');

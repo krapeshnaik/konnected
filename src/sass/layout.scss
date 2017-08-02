@@ -1,4 +1,5 @@
 @import './animate';
+@import './ripple';
 html,
 body {
     width: 100%;
@@ -15,7 +16,7 @@ body {
     height: 93%;
     padding: 1em;
     box-sizing: border-box;
-    background-color: beige;
+    background-color: #B0BEC5;
 }
 
 .dib {

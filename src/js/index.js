@@ -1,7 +1,10 @@
+'use strict';
+
 import debug from 'debug';
-import router from './router';
-import firebase from 'JSRoot/util/firebase_init.js';
-import login from 'JSRoot/util/login_init.js';
+
+import router from '@root/router';
+import firebase from '@util/firebase_init.js';
+import login from '@util/login_init.js';
 
 debug('konnected:boot')('initialize');
 

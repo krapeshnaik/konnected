@@ -1,5 +1,3 @@
-
-
 //
 // Generated on Tue Dec 16 2014 12:13:47 GMT+0100 (CET) by Charlie Robbins, Paolo Fragomeni & the Contributors (Using Codesurgeon).
 // Version 1.2.6
@@ -39,8 +37,7 @@
         fire: function () {
             if (this.mode === 'modern') {
                 this.history === true ? window.onpopstate() : window.onhashchange();
-            }
-            else {
+            } else {
                 this.onHashChanged();
             }
         },
@@ -60,8 +57,8 @@
             }
 
             //note IE8 is being counted as 'modern' because it has the hashchange event
-            if ('onhashchange' in window && (document.documentMode === undefined
-                || document.documentMode > 7)) {
+            if ('onhashchange' in window && (document.documentMode === undefined ||
+                    document.documentMode > 7)) {
                 // At least for now HTML5 history is available for 'modern' browsers only
                 if (this.history === true) {
                     // There is an old bug in Chrome that causes onpopstate to fire even
@@ -72,13 +69,11 @@
                     setTimeout(function () {
                         window.onpopstate = onchange;
                     }, 500);
-                }
-                else {
+                } else {
                     window.onhashchange = onchange;
                 }
                 this.mode = 'modern';
-            }
-            else {
+            } else {
                 //
                 // IE support, based on a concept by Erik Arvidson ...
                 //
@@ -96,7 +91,9 @@
                     });
                 }
 
-                window.setInterval(function () { self.check(); }, 50);
+                window.setInterval(function () {
+                    self.check();
+                }, 50);
 
                 this.onHashChanged = onchange;
                 this.mode = 'legacy';
@@ -156,7 +153,7 @@
             return this;
         },
 
-        onHashChanged: function () { }
+        onHashChanged: function () {}
     };
 
     var Router = exports.Router = function (routes) {
@@ -178,8 +175,8 @@
     };
 
     Router.prototype.init = function (r) {
-        var self = this
-            , routeTo;
+        var self = this,
+            routeTo;
         this.handler = function (onChangeEvent) {
             var newURL = onChangeEvent && onChangeEvent.newURL || window.location.hash;
             var url = self.history === true ? self.getPath() : newURL.replace(/.*#/, '');
@@ -194,16 +191,14 @@
             } else if (!dlocHashEmpty()) {
                 self.dispatch('on', '/' + dloc.hash.replace(/^(#\/|#|\/)/, ''));
             }
-        }
-        else {
+        } else {
             if (this.convert_hash_in_init) {
                 // Use hash as route
                 routeTo = dlocHashEmpty() && r ? r : !dlocHashEmpty() ? dloc.hash.replace(/^#/, '') : null;
                 if (routeTo) {
                     window.history.replaceState({}, document.title, routeTo);
                 }
-            }
-            else {
+            } else {
                 // Use canonical url
                 routeTo = this.getPath();
             }
@@ -220,7 +215,9 @@
 
     Router.prototype.explode = function () {
         var v = this.history === true ? this.getPath() : dloc.hash;
-        if (v.charAt(1) === '/') { v = v.slice(1) }
+        if (v.charAt(1) === '/') {
+            v = v.slice(1)
+        }
         return v.slice(1, v.length).split("/");
     };
 
@@ -229,11 +226,9 @@
 
         if (typeof i === 'number' && typeof v === 'string') {
             url[i] = v;
-        }
-        else if (typeof val === 'string') {
+        } else if (typeof val === 'string') {
             url.splice(i, v, s);
-        }
-        else {
+        } else {
             url = [i];
         }
 
@@ -269,12 +264,10 @@
 
         if (typeof v === "number") {
             ret = this.explode()[v];
-        }
-        else if (typeof v === "string") {
+        } else if (typeof v === "string") {
             var h = this.explode();
             ret = h.indexOf(v);
-        }
-        else {
+        } else {
             ret = this.explode();
         }
 
@@ -293,6 +286,7 @@
         }
         return path;
     };
+
     function _every(arr, iterator) {
         for (var i = 0; i < arr.length; i += 1) {
             if (iterator(arr[i], i, arr) === false) {
@@ -318,7 +312,7 @@
             iterator(arr[completed], function (err) {
                 if (err || err === false) {
                     callback(err);
-                    callback = function () { };
+                    callback = function () {};
                 } else {
                     completed += 1;
                     if (completed === arr.length) {
@@ -345,14 +339,16 @@
     }
 
     function regifyString(str, params) {
-        var matches, last = 0, out = "";
+        var matches, last = 0,
+            out = "";
         while (matches = str.substr(last).match(/[^\w\d\- %@&]*\*[^\w\d\- %@&]*/)) {
             last = matches.index + matches[0].length;
             matches[0] = matches[0].replace(/^\*/, "([_.()!\\ %@&a-zA-Z0-9-]+)");
             out += str.substr(0, matches.index) + matches[0];
         }
         str = out += str.substr(last);
-        var captures = str.match(/:([^\/]+)/ig), capture, length;
+        var captures = str.match(/:([^\/]+)/ig),
+            capture, length;
         if (captures) {
             length = captures.length;
             for (var i = 0; i < length; i++) {
@@ -368,7 +364,12 @@
     }
 
     function terminator(routes, delimiter, start, stop) {
-        var last = 0, left = 0, right = 0, start = (start || "(").toString(), stop = (stop || ")").toString(), i;
+        var last = 0,
+            left = 0,
+            right = 0,
+            start = (start || "(").toString(),
+            stop = (stop || ")").toString(),
+            i;
         for (i = 0; i < routes.length; i++) {
             var chunk = routes[i];
             if (chunk.indexOf(start, last) > chunk.indexOf(stop, last) || ~chunk.indexOf(start, last) && !~chunk.indexOf(stop, last) || !~chunk.indexOf(start, last) && ~chunk.indexOf(stop, last)) {
@@ -448,7 +449,8 @@
     };
 
     Router.prototype.path = function (path, routesFn) {
-        var self = this, length = this.scope.length;
+        var self = this,
+            length = this.scope.length;
         if (path.source) {
             path = path.source.replace(/\\\//ig, "/");
         }
@@ -460,7 +462,10 @@
     };
 
     Router.prototype.dispatch = function (method, path, callback) {
-        var self = this, fns = this.traverse(method, path.replace(QUERY_SEPARATOR, ""), this.routes, ""), invoked = this._invoked, after;
+        var self = this,
+            fns = this.traverse(method, path.replace(QUERY_SEPARATOR, ""), this.routes, ""),
+            invoked = this._invoked,
+            after;
         this._invoked = true;
         if (!fns || fns.length === 0) {
             this.last = [];
@@ -475,6 +480,7 @@
         if (this.recurse === "forward") {
             fns = fns.reverse();
         }
+
         function updateAndInvoke() {
             self.last = fns.after;
             self.invoke(self.runlist(fns), self, callback);
@@ -524,11 +530,14 @@
     };
 
     Router.prototype.traverse = function (method, path, routes, regexp, filter) {
-        var fns = [], current, exact, match, next, that;
+        var fns = [],
+            current, exact, match, next, that;
+
         function filterRoutes(routes) {
             if (!filter) {
                 return routes;
             }
+
             function deepCopy(source) {
                 var result = [];
                 for (var i = 0; i < source.length; i++) {
@@ -536,6 +545,7 @@
                 }
                 return result;
             }
+
             function applyFilter(fns) {
                 for (var i = fns.length - 1; i >= 0; i--) {
                     if (Array.isArray(fns[i])) {
@@ -558,7 +568,9 @@
             return newRoutes;
         }
         if (path === this.delimiter && routes[method]) {
-            next = [[routes.before, routes[method]].filter(Boolean)];
+            next = [
+                [routes.before, routes[method]].filter(Boolean)
+            ];
             next.after = [routes.after].filter(Boolean);
             next.matched = true;
             next.captures = [];
@@ -575,7 +587,9 @@
                     continue;
                 }
                 if (match[0] && match[0] == path && routes[r][method]) {
-                    next = [[routes[r].before, routes[r][method]].filter(Boolean)];
+                    next = [
+                        [routes[r].before, routes[r][method]].filter(Boolean)
+                    ];
                     next.after = [routes[r].after].filter(Boolean);
                     next.matched = true;
                     next.captures = match.slice(1);
@@ -664,7 +678,10 @@
 
 
     Router.prototype.extend = function (methods) {
-        var self = this, len = methods.length, i;
+        var self = this,
+            len = methods.length,
+            i;
+
         function extend(method) {
             self._methods[method] = true;
             self[method] = function () {
@@ -696,8 +713,13 @@
         if (!Array.isArray(path)) {
             path = path.split(self.delimiter);
         }
+
         function insertOrMount(route, local) {
-            var rename = route, parts = route.split(self.delimiter), routeType = typeof routes[route], isRoute = parts[0] === "" || !self._methods[parts[0]], event = isRoute ? "on" : rename;
+            var rename = route,
+                parts = route.split(self.delimiter),
+                routeType = typeof routes[route],
+                isRoute = parts[0] === "" || !self._methods[parts[0]],
+                event = isRoute ? "on" : rename;
             if (isRoute) {
                 rename = rename.slice((rename.match(new RegExp("^" + self.delimiter)) || [""])[0].length);
                 parts.shift();

@@ -1,3 +1,5 @@
-module.exports = Konnected = {
+'use strict';
 
-}
+const Konnected = {}
+
+export default Konnected;
