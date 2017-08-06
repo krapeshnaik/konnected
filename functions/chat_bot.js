@@ -4,15 +4,16 @@ const
     firebaseAdmin = require('firebase-admin');
 
 const
-    app = apiai('f8a6229347a64e3eac38a17f5972dffe'),
+    config = require('./config'),
+    app = apiai(config.apiai.key),
     admin = firebaseAdmin.initializeApp(functions.config().firebase);
 
 module.exports = functions.https.onRequest((req, res) => {
-    res.set('Access-Control-Allow-Origin', 'https://konnected-e015d.firebaseapp.com');
-    res.set('Access-Control-Allow-Methods', 'GET');
+    res.set('Access-Control-Allow-Origin', config.accessControl.allowOrigin);
+    res.set('Access-Control-Allow-Methods', config.accessControl.allowMethods);
 
     let request = app.textRequest(req.query.command, {
-        sessionId: 123456
+        sessionId: config.apiai.sessionId
     });
 
     request.on('response', response => {

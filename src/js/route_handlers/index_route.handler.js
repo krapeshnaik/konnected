@@ -9,7 +9,6 @@ import Konnected from '@root/app_scope.js';
 let logger = debug('konnected:index_route');
 
 export default () => {
-    // loading
     logger('render');
     render(false, indexComponent({}));
 }

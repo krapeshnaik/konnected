@@ -9,23 +9,29 @@ import Konnected from '@root/app_scope.js';
 let logger = debug('konnected:devices_route');
 
 export default () => {
-    let data = {};
-
-    if (!Konnected.watchEnabled) {
-        Konnected
-            .firebase
-            .database()
-            .ref('/devices')
-            .on('value', snapshot => {
-                data = snapshot.val();
-
-                // re render
-                logger('data received');
-                render(false, devicesComponent(data));
-            })
-
-        Konnected.watchEnabled = true;
+    // check if devices are already fetched
+    if (Konnected.devices) {
+        logger('cached devices');
+        render(false, devicesComponent(Konnected.devices));
+        return;
     }
+
+    // get all devices
+    Konnected
+        .firebase
+        .database()
+        .ref('/devices')
+        .once('value', snapshot => {
+            // re render
+            logger('devices fetched');
+            Konnected.devices = snapshot.val();
+            render(false, devicesComponent(Konnected.devices));
+
+            // activate link
+            document
+                .querySelector('.devices-link')
+                .focus()
+        });
 
     // loading
     logger('loading');

@@ -1,6 +1,7 @@
 const
     webpack = require('webpack'),
     path = require('path'),
+    config = require('./src/config/prod.config.js'),
     HtmlPlugin = require('html-webpack-plugin'),
     CleanPlugin = require('clean-webpack-plugin');
 
@@ -81,12 +82,12 @@ module.exports = {
         }),
 
         new webpack.DefinePlugin({
-            FireBaseKey: JSON.stringify('AIzaSyCVWVc5T88npxv6CC_gcMxQsndO_WzYHNY'),
-            FireBaseAuthDomain: JSON.stringify('konnected-e015d.firebaseapp.com'),
-            FireBaseDatabase: JSON.stringify('https://konnected-e015d.firebaseio.com'),
-            FirebaseProjectId: "konnected-e015d",
-            FireBaseStorage: JSON.stringify('konnected-e015d.appspot.com'),
-            FCMSenderId: JSON.stringify('1044398055065')
+            FireBaseKey: JSON.stringify(config.firebase.key),
+            FireBaseAuthDomain: JSON.stringify(config.firebase.authDomain),
+            FireBaseDatabase: JSON.stringify(config.firebase.database),
+            FirebaseProjectId: config.firebase.projectId,
+            FireBaseStorage: JSON.stringify(config.firebase.storage),
+            FCMSenderId: JSON.stringify(config.firebase.senderId)
         })
     ]
 }

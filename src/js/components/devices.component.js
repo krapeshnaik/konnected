@@ -2,6 +2,7 @@
 // require('@css/index.scss');
 
 import debug from 'debug';
+import config from '../../config/dev.config.js';
 
 let logger = debug('konnected:devices_comp');
 
@@ -29,7 +30,7 @@ const bindEvents = () => {
     document
         .querySelector('#device1')
         .addEventListener('click', e => {
-            fetch('https://us-central1-konnected-e015d.cloudfunctions.net/chatBot?command=lights')
+            fetch(`${config.functions.endPoint}?command=lights`)
                 .then(response => {
                     if (response.status !== 200) {
                         logger('Looks like there was a problem. Status Code: ' + response.status);
