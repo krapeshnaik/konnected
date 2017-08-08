@@ -1,7 +1,7 @@
 const
     webpack = require('webpack'),
     path = require('path'),
-    config = require('./src/config/dev.config.js'),
+    config = require('./src/config'),
     HtmlPlugin = require('html-webpack-plugin'),
     CleanPlugin = require('clean-webpack-plugin');
 
@@ -39,7 +39,7 @@ module.exports = {
         extensions: ['.js'],
         alias: {
             '@root': JS_ROOT,
-            // '@config': path.join('config'),
+            '@config': path.join(__dirname, SRC_DIR, 'config'),
             '@libs': path.join(JS_ROOT, 'libs'),
             '@utils': path.join(JS_ROOT, 'utils'),
             '@components': path.join(JS_ROOT, 'components'),

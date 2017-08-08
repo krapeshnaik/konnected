@@ -11,21 +11,9 @@ let logger = debug('konnected:chat_route');
 export default () => {
     let messages = [];
 
-    // read all messages
-    Konnected
-        .firebase
-        .database()
-        .ref('/messages')
-        .once('value')
-        .then(snapshot => {
-            messages = snapshot.val();
+    // Use IDB
 
-            // re render
-            logger('data received');
-            render(false, chatComponent(messages));
-        });
-
-    // loading
-    logger('loading');
-    render(true);
+    // render
+    logger('render');
+    render(false, chatComponent(messages));
 }

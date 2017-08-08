@@ -2,7 +2,7 @@
 // require('@css/index.scss');
 
 import debug from 'debug';
-import config from '../../config/dev.config.js';
+import config from '@config';
 
 let logger = debug('konnected:devices_comp');
 

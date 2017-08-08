@@ -2,16 +2,32 @@
 .chat-container {
     width: 100%;
     height: 100%;
-    .messages {
+    .messages-list {
         width: 100%;
         height: 90%;
         background-color: white;
+        .messages {
+            width: 100%;
+            height: 100%;
+            padding: 1em;
+            margin: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+            overflow-y: auto;
+            .message {
+                list-style: none;
+                &.up {}
+                &.down {
+                    text-align: right;
+                }
+            }
+        }
     }
     .msg-inp {
         margin-top: .5em;
         height: 8%;
         .msg-cont {
-            width: 80%;
+            width: 82%;
             .msg {
                 background-color: white;
                 border: none;
@@ -28,7 +44,7 @@
             width: 2.35em;
             height: 2.35em;
             border-radius: 50%;
-            margin-left: .75em;
+            margin-left: .5em;
         }
     }
 }
